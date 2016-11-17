@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "yaml_config"
+require "pry"
+Pry.start
