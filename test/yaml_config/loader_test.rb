@@ -1,21 +1,18 @@
 require "test_helper"
 
 module YAMLConfig
-  class YAMLConfigTest < TestCase
-    Subject = ::YAMLConfig
+  class LoaderTest < TestCase
+    Subject = ::YAMLConfig::Loader
 
     subject { Subject }
 
-    should "have a version number" do
-      refute_nil subject.const_get(:VERSION)
-    end
-
-    context "load" do
+    context "#config" do
       should "build expected structures" do
         env = :development
-        config_dir = File.expand_path("../fixtures", __FILE__)
+        config_dir = File.expand_path("../../fixtures", __FILE__)
         configs = [:config_with_env, :config_without_env]
-        config = subject.load(env, config_dir, configs)
+        loader = subject.new(env, config_dir, configs)
+        config = loader.config
         expected_values = {
           :an_array => %w[foo bar baz],
           :string => "Hello, World!",

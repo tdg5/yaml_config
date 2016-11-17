@@ -1,0 +1,8 @@
+an_array:
+  - foo
+  - bar
+  - baz
+string: "Hello, World!"
+boolean: true
+integer: 5
+float: 3.14
